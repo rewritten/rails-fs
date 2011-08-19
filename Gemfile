@@ -36,4 +36,6 @@ end
 
 gem 'acts-as-taggable-on'
 gem 'acts_as_tree'
+gem 'jammit'
+
 
