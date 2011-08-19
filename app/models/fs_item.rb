@@ -2,8 +2,10 @@ class FsItem < ActiveRecord::Base
   acts_as_taggable
   acts_as_tree :order => :name
 
-  validates_format_of :name, :with => /\A[^\/]+\z/, :message => 'No forward slash "/" Allowed'
-  validates_uniqueness_of :name, :scope => :parent_id
+  validates :name,
+             :format => { :with => /\A[^\/]+\Z/ } ,
+             :uniqueness => { :scope => :parent_id, :case_sensitive => false }
+  validates :parent, :is_a => { :class => :directory }, :allow_nil => true
 
   before_save :update_path
 
@@ -15,6 +17,7 @@ class FsItem < ActiveRecord::Base
   end
 
   def update_descendants
+    # TODO: use an actual SQL update instead of recursion.
     FsItem.where(:parent_id => self.id).find_each do |item|
       item.save
     end

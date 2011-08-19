@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110818151217) do
+ActiveRecord::Schema.define(:version => 20110819193822) do
 
   create_table "fs_items", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20110818151217) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.string   "type"
   end
 
   add_index "fs_items", ["parent_id", "name"], :name => "index_fs_items_on_parent_id_and_name", :unique => true

@@ -1,0 +1,3 @@
+class Directory < FsItem
+end
+
