@@ -1,8 +1,8 @@
 var App = {
     Views: {},
-    Controllers: {},
+    Routers: {},
     init: function() {
-        new App.Controllers.FsItems();
+        new App.Routers.FsItems();
         Backbone.history.start();
     }
 };

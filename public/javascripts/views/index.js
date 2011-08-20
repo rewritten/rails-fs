@@ -5,11 +5,11 @@ App.Views.Index = Backbone.View.extend({
     },
     
     render: function() {
-        var create_links = "<h3><a href='#new'>Create new subdir</a><a href='#new'>Upload new file</a></h3>"
+        var create_links = "<h3><a href='#_newdir'>Create new subdir</a> <a href='#_upload'>Upload new file</a></h3>"
         if(this.items.length > 0) {
             var out = create_links + "<ul>";
             _(this.items).each(function(item) {
-                out += "<li class=" + item.type + "><a href='#" + item.path + "'>" + item.escape('name') + "</a></li>";
+                out += "<li class=" + item.get('type') + "><a href='#" + item.get('path') + "'>" + item.escape('name') + "</a></li>";
             });
             out += "</ul>";
             out += create_links
@@ -21,4 +21,12 @@ App.Views.Index = Backbone.View.extend({
     }
 });
 
+App.Views.Edit = Backbone.View.extend({
+  initialize: function() {
+    
+  },
 
+  render: function() {
+    alert("OK");
+  }
+})
